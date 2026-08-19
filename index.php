@@ -2,14 +2,18 @@
 
 session_start();
 
+require 'connec.php';
+
 if (!isset($_SESSION['username'])) {
     header('location: login.php');
     exit;
 }
 
-$pdo = new PDO('mysql:host=localhost;dbname=library;charset=utf8mb4',
-'root',
-'');
+
+
+$pdo = new PDO(DSN,
+USER,
+PASS);
 
 if (isset($_POST['add_to_cart'])) {
     $bookId = $_POST['book_id'];
